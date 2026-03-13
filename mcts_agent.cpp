@@ -34,7 +34,7 @@ double MCTSAgent::simulate(shared_ptr<GameState> state, int root_player) {
         if( legal_moves.empty() ) break;
         uniform_int_distribution<int> dist(0,legal_moves.size()-1);
         int random_move = legal_moves[dist(rng)];
-        state = state->get_reward(root_player);
+        state = state->apply_move(random_move);
     }
     return state->get_reward(root_player);
 }
